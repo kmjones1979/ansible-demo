@@ -1,14 +1,17 @@
 # ansible-demo
+This is a demonstration on how to deploy and configure NGINX Plus as both a load
+balancer and a webserver.
 
-## Setup
+#### Checkout the cplaybook
+
 
 #### Install Ansible
 
 
-#### Configure Ansible hosts
+#### Configure Ansible hosts file
 
 
-#### Setup Authorization over SSH
+#### Setup authorization over SSH
 
 
-#### Deploy
+#### Deploy NGINX Plus
