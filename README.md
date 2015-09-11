@@ -1,8 +1,8 @@
-# ansible-demo
+# Ansible / NGINX Plus Demo
 This is a demonstration on how to deploy and configure NGINX Plus as both a load
 balancer and a webserver.
 
-#### Checkout the cplaybook
+#### Checkout ansible-demo
 
 
 #### Install Ansible
