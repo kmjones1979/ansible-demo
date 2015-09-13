@@ -1,3 +1,18 @@
+
+- name: install epel-release
+  yum:
+    name: epel-release
+    state: latest
+
+- name: install pip
+  yum:
+    name: python-pip
+    state: latest
+
+- name: install httplib2
+  pip:
+    name: httplib2
+
 - uri:
     url: http://{{ nginxplus_api_server }}/upstream_conf?add=&upstream=backend&server={{ ansible_default_ipv4.address }}:80
     method: GET
