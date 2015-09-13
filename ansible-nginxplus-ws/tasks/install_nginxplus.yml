@@ -1,0 +1,32 @@
+# ./tasks/install_nginx_plus.yml
+
+- name: NGINX Plus | Creating NGINX Plus ssl cert repo directory
+  file: path=/etc/ssl/nginx state=directory group=root mode=0700
+
+- name: NGINX Plus | Copying NGINX Plus repository certificate
+  copy: src=/etc/ssl/nginx/nginx-repo.crt dest=/etc/ssl/nginx/nginx-repo.crt owner=root group=root mode=0700
+
+- name: NGINX Plus | Copying NGINX Plus repository key
+  copy: src=/etc/ssl/nginx/nginx-repo.key dest=/etc/ssl/nginx/nginx-repo.key owner=root group=root mode=0700
+
+- name: NGINX Plus | Downloading NGINX Plus CA certificate
+  get_url: url=https://cs.nginx.com/static/files/CA.crt dest=/etc/ssl/nginx/CA.crt mode=0700
+
+- name: NGINX Plus | Downloading yum NGINX Plus repository
+  get_url: url=https://cs.nginx.com/static/files/nginx-plus-7.repo dest=/etc/yum.repos.d/nginx-plus-7.repo mode=0700
+
+- name: NGINX Plus | Installing NGINX Plus
+  yum:
+    name: nginx-plus
+    state: latest
+
+- name: NGINX Plus | Stopping NGINX Plus
+  service:
+    name: nginx
+    state: stopped
+
+- name: NGINX Plus | Starting NGINX Plus
+  service:
+    name: nginx
+    state: started
+
