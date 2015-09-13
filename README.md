@@ -53,6 +53,8 @@ nginxplus-ws3.domain.com
 In order to install NGINX Plus using this playbook from the Ansible server
 you need to copy both your nginx-repo cert and key to your /etc/ssl/nginx directory.
 
+The /etc/ssl/nginx directory on your Ansible server should contain both files like so...
+
 ```
 [kjones@zion-development ~]# ls -l /etc/ssl/nginx/
 total 12
@@ -78,6 +80,43 @@ sudo vim /root/.ssh/authorized_keys
 
 #### Deploy
 
+Deploy NGINX Plus Load Balancer
+
 ```
-ansible-playbook 
+ansible-playbook ansible-nginxplus-lb/deploy.yml
 ```
+
+Deploy NGINX Plus as Web Server
+
+```
+ansible-playbook ansible-nginxplus-lb/deploy.yml
+```
+
+#### Tips
+
+ - Additional firewall configuration might be required on your servers.
+
+To disable your firewall on CentOS 7.1:
+
+```
+sudo systemctl disable firewalld
+sudo systemctl stop firewalld
+```
+
+ - Running the nginxplus-ws playbook twice will result in duplicate upstreams.
+
+Upstreams can be managed via the NGINX Plus API on the fly:
+Visit http://nginx.org/en/docs/http/ngx_http_upstream_conf_module.html for more
+information.
+
+List upsteam servers for backend by id# :
+
+```
+curl 'http://127.0.0.1/upstream_conf?upstream=backend'
+```
+
+Remove a specific upstream by id# :
+```
+curl '127.0.0.1/upstream_conf?remove=&upstream=backend&id=0'
+```
+
