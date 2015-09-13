@@ -48,6 +48,18 @@ nginxplus-ws2.domain.com
 nginxplus-ws3.domain.com
 ```
 
+#### Ensure Ansible server has valid NGINX Plus license key and cert
+
+In order to install NGINX Plus using this playbook from the Ansible server
+you need to copy both your nginx-repo cert and key to your /etc/ssl/nginx directory.
+
+```
+[kjones@zion-development ~]# ls -l /etc/ssl/nginx/
+total 12
+-rwx------ 1 root root 1334 Sep  2 21:59 nginx-repo.crt
+-rwx------ 1 root root 1704 Sep  2 21:59 nginx-repo.key
+```
+
 #### Setup authorization over SSH
 
 From your ansible server generate an ssh-key for your root account...

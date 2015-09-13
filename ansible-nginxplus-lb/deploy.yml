@@ -5,3 +5,4 @@
     - 'vars.yml'
   tasks:
     - include: 'tasks/install_nginxplus.yml'
+    - include: 'tasks/copy_configurations.yml'
