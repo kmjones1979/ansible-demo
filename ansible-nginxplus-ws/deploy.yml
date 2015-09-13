@@ -1,7 +1,9 @@
 # ./deploy.yml
 
-- hosts: nginxplus-lb
+- hosts: nginxplus-ws
   vars_files:
     - 'vars.yml'
   tasks:
     - include: 'tasks/install_nginxplus.yml'
+    - include: 'tasks/copy_configurations.yml'
+    - include: 'tasks/add_upstream_conf.yml'
