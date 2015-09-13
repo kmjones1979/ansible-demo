@@ -78,6 +78,9 @@ that you defined in the ansible hosts file.
 sudo vim /root/.ssh/authorized_keys
 ```
 
+Note: You might need to create the ssh directory by running 'ssh-keygen' as root
+on the destination servers.
+
 #### Deploy
 
 Deploy NGINX Plus Load Balancer
@@ -86,7 +89,7 @@ Deploy NGINX Plus Load Balancer
 ansible-playbook ansible-nginxplus-lb/deploy.yml
 ```
 
-Deploy NGINX Plus as Web Server
+Deploy NGINX Plus Web Servers
 
 ```
 ansible-playbook ansible-nginxplus-lb/deploy.yml
@@ -96,7 +99,7 @@ ansible-playbook ansible-nginxplus-lb/deploy.yml
 
  - Additional firewall configuration might be required on your servers.
 
-To disable your firewall on CentOS 7.1:
+To disable and stop your firewall on CentOS 7.1:
 
 ```
 sudo systemctl disable firewalld
