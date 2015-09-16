@@ -14,5 +14,5 @@
     name: httplib2
 
 - uri:
-    url: http://{{ nginxplus_api_server }}/upstream_conf?add=&upstream=backend&server={{ ansible_default_ipv4.address }}:80
+    url: http://{{ nginxplus_api_server }}/upstream_conf?add=&upstream=backend&server={{ ansible_default_ipv4.address }}:{{ nginx_ws_port }}
     method: GET
